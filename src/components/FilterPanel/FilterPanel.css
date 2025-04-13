@@ -1,0 +1,17 @@
+.filter-panel input[type="text"],
+.filter-panel select {
+    width: 100%;
+}
+
+.filter-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 2rem;
+    align-items: start;
+    margin-bottom: 50px;
+}
+
+.filter-item {
+    display: flex;
+    flex-direction: column;
+}
