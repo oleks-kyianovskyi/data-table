@@ -1,54 +1,75 @@
-# React + TypeScript + Vite
+# 📊 Dynamic Data Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A flexible, performant dashboard-style app that renders dynamic tables based on schema configuration.  
+Supports real-time filtering, row editing, dark mode, and large dataset virtualization.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧱 Tech Stack
 
-## Expanding the ESLint configuration
+- **Build**: [Vite](https://vitejs.dev/)
+- **Language**: TypeScript
+- **Framework**: React
+- **State Management**: Zustand
+- **Styling**: Vanilla CSS with CSS Variables
+- **Performance**: `react-window` for virtualization
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🚀 Features
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+-  **Dynamic column rendering** via config schema
+-  **Filter panel** for text, number ranges, dates, enums
+-  **AND / OR logic** for compound filters
+-  **Saved views** stored in `localStorage`
+-  **Row editing** with in-place updates
+-  **Dark/Light theme** with Context API + CSS variables
+-  **Optimized for large datasets** using virtualization
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## 🧠 Architecture Decisions
+
+- **Modular design**  
+  Each major feature (DataTable, FilterPanel, RowEditor) lives in its own directory for scalability and separation of concerns.
+
+- **Schema-driven rendering**  
+  The entire table layout and behavior is dictated by a single `ColumnSchema`, making it easily reusable for different datasets.
+
+- **Zustand for row-level state**  
+  Prevents full table re-renders when a single row is edited.
+
+- **Context API for theming**  
+  Global dark/light mode control, stored in localStorage and applied via `class="theme-dark"`.
+
+- **Performance-first rendering**  
+  `react-window` only renders visible rows for snappy performance on large lists.
+
+---
+
+## ⚔️ Challenges
+
+- **Filter logic**  
+  `applyFilters()` required careful handling of various data types (strings, numbers, dates, enums) and optional inputs.
+
+- **AND/OR compound logic**  
+  Initially caused false positives; required precise filter normalization and early-return logic.
+
+---
+
+## 🔮 Future Improvements
+
+-  Realtime column resizing & reordering
+-  Mobile responsiveness (flex/grid layout)
+-  Styling framework like Tailwind or ShadCN
+-  Global full-text search across rows
+-  Deeper modularization of functional components
+-  E2E tests with Cypress
+
+---
+
+## 📦 Getting Started
+
+```bash
+npm install
+npm run dev

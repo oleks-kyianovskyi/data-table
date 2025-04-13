@@ -54,7 +54,7 @@ const DataTablePage = () => {
 
   return (
     <div className="data-table-page">
-      <h2>Data Table with Views</h2>
+      <h2>Dynamic Data Explorer</h2>
       <ThemeToggle />
       <div className="data-table-controls">
         <input
