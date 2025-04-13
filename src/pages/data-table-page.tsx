@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FilterLogic, FilterState } from "../components/FilterPanel/types.ts";
 import { data, schema } from "../data/mock-data.ts";
 import { SavedView } from "../components/DataTable/types.ts";
@@ -55,7 +55,7 @@ const DataTablePage = () => {
   return (
     <div className="data-table-page">
       <h2>Data Table with Views</h2>
-      <ThemeToggle>Change theme</ThemeToggle>
+      <ThemeToggle />
       <div className="data-table-controls">
         <input
           placeholder="View name"

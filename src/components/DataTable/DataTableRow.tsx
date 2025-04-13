@@ -7,6 +7,8 @@ interface DataTableRowProps {
   row: Record<string, any>;
   schema: ColumnSchema[];
   onClick?: (row: Record<string, any>) => void;
+  index: number;
+  style: any;
 }
 
 const DataTableRow: React.FC<DataTableRowProps> = ({ row, schema, onClick, style, index }) => {
